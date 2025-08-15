@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/sections/Hero.astro";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const heroContent = {
+    title: "Descubre el Café Soluble Premium de los Mayas",
+    description:
+        "Experiencia ancestral en cada taza. Elaborado con los mejores granos de café guatemaltecos y tecnología moderna para tu conveniencia.",
+    buttons: [
+        {
+            text: "Get Started",
+            link: "/contact",
+            target: "_self",
+        },
+        {
+            text: "View on GitHub",
+            link: "https://github.com/rspisarski/titan-core",
+            target: "_blank",
+        },
+    ],
+    backgroundImage:
+        "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3",
+    overlayOpacity: 0.4,
+};
+---
+
+<Layout title="Home">
+    <Hero content={heroContent} />
+</Layout>
