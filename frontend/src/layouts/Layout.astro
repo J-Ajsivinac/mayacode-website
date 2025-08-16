@@ -5,7 +5,7 @@ interface Props {
 
 const { title } = Astro.props;
 import "../styles/global.css";
-
+import Navbar from "../components/Navbar.astro";
 const theme = "apollo";
 ---
 
@@ -19,6 +19,7 @@ const theme = "apollo";
         <title>{title}</title>
     </head>
     <body data-theme={theme}>
+        <Navbar />
         <slot />
     </body>
 </html>

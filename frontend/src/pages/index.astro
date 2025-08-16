@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/sections/Hero.astro";
+import ScrollTop from "../components/ui/ScrollTop.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -28,4 +29,36 @@ const heroContent = {
 
 <Layout title="Home">
     <Hero content={heroContent} />
+    <section id="inicio" class="h-screen flex items-center justify-center">
+        <h1 class="text-4xl">Bienvenido a MayaCode</h1>
+    </section>
+
+    <section
+        id="nosotros"
+        class="h-screen flex items-center justify-center bg-gray-800"
+    >
+        <h2 class="text-3xl">Sobre Nosotros</h2>
+    </section>
+
+    <section
+        id="productos"
+        class="h-screen flex items-center justify-center bg-gray-700"
+    >
+        <h2 class="text-3xl">Nuestros Productos</h2>
+    </section>
+
+    <section
+        id="contacto"
+        class="h-screen flex items-center justify-center bg-gray-600"
+    >
+        <h2 class="text-3xl">Contáctanos</h2>
+    </section>
+
+    <section
+        id="comprar"
+        class="h-screen flex items-center justify-center bg-gray-500"
+    >
+        <h2 class="text-3xl">Comprar Ahora</h2>
+    </section>
+    <ScrollTop />
 </Layout>

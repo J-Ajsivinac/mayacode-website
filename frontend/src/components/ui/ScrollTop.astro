@@ -1,0 +1,30 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+    id="scrollTopBtn"
+    class="fixed bottom-6 right-6 bg-white text-black px-4 py-4 rounded-md shadow-lg hover:bg-gray-200 transition-opacity duration-300 opacity-0 pointer-events-none"
+>
+    <Icon name="GravityUiChevronsUp" class="text-2xl" />
+</button>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById("scrollTopBtn");
+
+        // Mostrar/ocultar el botón según el scroll
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 200) {
+                btn?.classList.remove("opacity-0", "pointer-events-none");
+            } else {
+                btn?.classList.add("opacity-0", "pointer-events-none");
+            }
+        });
+
+        // Subir al hacer clic
+        btn?.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    });
+</script>
