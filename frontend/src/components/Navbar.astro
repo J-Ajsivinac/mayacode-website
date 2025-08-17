@@ -1,0 +1,47 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from "../components/ui/Button.astro";
+
+const navItems = [
+    { name: "Inicio", href: "#inicio" },
+    { name: "Nosotros", href: "#nosotros" },
+    { name: "Productos", href: "#productos" },
+    { name: "Contacto", href: "#contacto" },
+];
+---
+
+<nav
+    class="bg-white text-white px-8 py-4 flex items-center justify-between border-b border-gray-400"
+>
+    <div class="flex items-center gap-2">
+        <Icon name="LineMdCoffee" class="text-4xl text-accent" />
+        <span class="font-handwriting text-accent font-semibold"
+            >MayaCode</span
+        >
+    </div>
+
+    <ul class="flex gap-8">
+        {
+            navItems.map((item) => (
+                <li>
+                    <a
+                        href={item.href}
+                        class="text-[#1b1b1b] hover:text-accent transition-colors duration-300"
+                    >
+                        {item.name}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+
+    <!-- <a
+        href="#comprar"
+        class="border border-white px-4 py-1 rounded-lg font-handwriting hover:bg-white hover:text-black transition"
+    >
+        Comprar Ahora
+    </a> -->
+    <Button href="#comprar" target={"buy_self"} variant={"secondary"}>
+        Comprar Ahora
+    </Button>
+</nav>
