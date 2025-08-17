@@ -1,7 +1,7 @@
 ---
 import Button from "../ui/Button.astro";
-
 interface HeroContent {
+    extra: string;
     title: string;
     description: string;
     buttons?: {
@@ -10,8 +10,8 @@ interface HeroContent {
         variant?: "primary" | "secondary" | "ghostLight" | "ghostDark";
         target?: string;
     }[];
-    backgroundImage?: string | any; // Using any for now to handle both string paths and imported images
-    overlayOpacity?: number; // Value between 0 and 1
+    backgroundImage?: string | any;
+    overlayOpacity?: number;
 }
 
 interface Props {
@@ -19,57 +19,41 @@ interface Props {
 }
 
 const { content } = Astro.props;
-const opacity = content.overlayOpacity ?? 1; // Default opacity if not specified
 ---
 
-<section class="header-offset relative" id="inicio">
-    {
-        content.backgroundImage && (
-            <div class="absolute inset-0 left-0 top-0 w-full h-full overflow-hidden">
-                <img
-                    src={content.backgroundImage}
-                    alt=""
-                    width={1920}
-                    height={1080}
-                    class="w-full h-full object-cover"
-                    loading="eager"
-                    decoding="async"
-                />
-                <div
-                    class="hero-background absolute inset-0 left-0 top-0 w-full h-full overflow-hidden"
-                    style={`opacity: ${opacity};`}
-                />
-            </div>
-        )
-    }
-
+<section class="header-offset relative min-h-screen flex items-center" id="inicio">
     <div
-        class="site-container mx-auto px-4 py-large relative z-10 flex flex-col md:items-center md:justify-center md:text-center"
+        class="site-container mx-auto px-6 py-16 relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-8"
     >
-        <h1 class="text-white text-balance" data-aos="fade-up">
-            {content.title}
-        </h1>
-        <p
-            class="text-white mt-2 text-balance"
-            data-aos="fade-up"
-            data-aos-delay="100"
-        >
-            {content.description}
-        </p>
-        {
-            content.buttons && content.buttons.length > 0 && (
-                <div class="flex flex-wrap gap-4 mt-8" data-aos="fade-up">
-                    {content.buttons.map((button) => (
-                        <Button
-                            href={button.link}
-                            target={button.target || "_self"}
-                            variant={button.variant || "primary"}
-                        >
-                            {button.text}
-                        </Button>
-                    ))}
-                </div>
-            )
-        }
+        <div class="flex flex-col text-start md:text-left md:w-2/3">
+            <p class="uppercase text-lg font-semibold mb-4 text-[#797979]">
+                {content.extra}
+            </p>
+            <span class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 block" data-aos="fade-up">
+                {content.title}
+            </span>
+            <p class="text-base sm:text-lg md:text-xl leading-relaxed text-[#717171]">
+                {content.description}
+            </p>
+            {
+                content.buttons && content.buttons.length > 0 && (
+                    <div class="flex flex-wrap gap-4 mt-8" data-aos="fade-up">
+                        {content.buttons.map((button) => (
+                            <Button
+                                href={button.link}
+                                target={button.target || "_self"}
+                                variant={button.variant || "primary"}
+                                size="lg"
+                            >
+                                {button.text}
+                            </Button>
+                        ))}
+                    </div>
+                )
+            }
+        </div>
+        <div class="flex justify-center md:justify-end md:w-1/3" data-aos="fade-left">
+            <img src="../../public/coffee.png" alt="" class="rounded-3xl max-w-full h-auto shadow-md" />
+        </div>
     </div>
 </section>

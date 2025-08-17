@@ -1,6 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 @import "tailwindcss";
-
+@import "aos/dist/aos.css";
 @theme {
     --color-primary: #3557c1;
     --color-primary-light: #4b6ed4;
@@ -81,8 +82,8 @@
 
     --font-bruno-ace: "Bruno Ace SC", sans-serif;
     --font-noto-sans-kr: "Noto Sans KR", sans-serif;
-    --font-base: "Noto Sans KR", sans-serif;
-    --font-logo: "Bruno Ace SC", sans-serif;
+    --font-base: "Open Sans", sans-serif;
+    --font-logo: "Figtree", sans-serif;
     --font-headline: "Noto Sans KR", sans-serif;
 }
 
@@ -95,7 +96,7 @@
         --color-secondary-light: #ff8c1a;
         --color-secondary-dark: #994d00;
         --color-accent: #cc3600;
-        --color-background: #fff8f0;
+        --color-background: #dcdbdb;
         --color-background-light: #fff0e0;
         --color-background-dark: #332200;
         --color-headline: #332200;
@@ -130,8 +131,8 @@
         --color-secondary-light: #cc9900;
         --color-secondary-dark: #806100;
         --color-accent: #806100;
-        --color-background: #fdfbf6;
-        --color-background-light: #f5f0e1;
+        --color-background: #f7f3ed;
+        --color-background-light: #f7f3ed;
         --color-background-dark: #2d2d1a;
         --color-headline: #2d2d1a;
         --color-headline-light: #2d2d1a;
@@ -164,7 +165,7 @@
 
 @layer components {
     html {
-        font-size: 14px;
+        font-size: 0.83rem;
         color: var(--color-text-base);
     }
     body {
@@ -323,7 +324,7 @@ body {
 }
 
 .site-container {
-    @apply mx-auto max-w-[var(--container-base)] w-full mt-32;
+    @apply mx-auto max-w-[var(--container-base)] w-full ;
 }
 .site-container--small {
     @apply mx-auto max-w-[var(--container-small)] w-full;
@@ -340,7 +341,7 @@ body {
     --c2: #000;
     background: #000;
     background-size: var(--s) var(--s);
-    font-family: "Mozilla Text", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 /* Style the pre element containing the code */

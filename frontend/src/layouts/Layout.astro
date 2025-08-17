@@ -23,7 +23,7 @@ const theme = "apollo";
         <title>{title}</title>
     </head>
     <body data-theme={theme}>
-        <Navbar />
+        <Navbar class="fixed inset-0 bg-black/50 z-40 hidden" />
         <slot />
     </body>
 </html>
@@ -36,3 +36,8 @@ const theme = "apollo";
         height: 100%;
     }
 </style>
+
+<script>
+    import AOS from "aos";
+    AOS.init();
+</script>

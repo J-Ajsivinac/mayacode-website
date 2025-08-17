@@ -21,7 +21,7 @@ const {
 } = Astro.props;
 
 const baseStyles =
-    "group relative inline-flex overflow-hidden items-center justify-center rounded-border-small font-medium transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-md flex items-center gap-2";
+    "group relative inline-flex overflow-hidden items-center justify-center rounded-border-small font-medium transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-full flex items-center gap-2";
 
 const variants = {
     primary:
@@ -36,9 +36,9 @@ const variants = {
 };
 
 const sizes = {
-    sm: "h-9 px-3 text-xsmall",
-    md: "h-10 px-4 py-2 text-small",
-    lg: "h-11 px-8 text-base",
+    sm: "h-10 px-4 text-xsmall",
+    md: "h-12 px-6 py-2 text-small",
+    lg: "h-14 px-8 text-base",
 };
 
 const classes = [baseStyles, variants[variant], sizes[size], className].join(
