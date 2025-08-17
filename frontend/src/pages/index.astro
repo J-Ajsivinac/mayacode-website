@@ -1,6 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/sections/Hero.astro";
+import Us from "../components/sections/Us.astro";
+import Products from "../components/sections/Products.astro";
+import Contact from "../components/sections/Contact.astro";
+import Footer from "../components/sections/Footer.astro";
+import ScrollTop from "../components/ui/ScrollTop.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -28,4 +33,9 @@ const heroContent = {
 
 <Layout title="Home">
     <Hero content={heroContent} />
+    <Us />
+    <Products />
+    <Contact />
+    <Footer />
+    <ScrollTop />
 </Layout>

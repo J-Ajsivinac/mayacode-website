@@ -22,7 +22,7 @@ const { content } = Astro.props;
 const opacity = content.overlayOpacity ?? 1; // Default opacity if not specified
 ---
 
-<section class="header-offset relative">
+<section class="header-offset relative" id="inicio">
     {
         content.backgroundImage && (
             <div class="absolute inset-0 left-0 top-0 w-full h-full overflow-hidden">
