@@ -2,7 +2,7 @@
 export interface Props {
     href?: string;
     variant?: "primary" | "secondary" | "accent" | "ghostLight" | "ghostDark";
-    size?: "sm" | "md" | "lg";
+    size?: "sm" | "md" | "lg" | "full";
     disabled?: boolean;
     class?: string;
     type?: "button" | "submit" | "reset";
@@ -21,7 +21,7 @@ const {
 } = Astro.props;
 
 const baseStyles =
-    "group relative inline-flex overflow-hidden items-center justify-center rounded-border-small font-medium transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-md flex items-center gap-2";
+    "group relative inline-flex overflow-hidden items-center justify-center rounded-border-small font-medium transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-full flex items-center gap-2";
 
 const variants = {
     primary:
@@ -36,9 +36,10 @@ const variants = {
 };
 
 const sizes = {
-    sm: "h-9 px-3 text-xsmall",
-    md: "h-10 px-4 py-2 text-small",
-    lg: "h-11 px-8 text-base",
+    sm: "h-10 px-4 text-xsmall",
+    md: "h-12 px-6 py-2 text-small",
+    lg: "h-14 px-8 text-base",
+    full: "h-16 px-8 text-base w-full"
 };
 
 const classes = [baseStyles, variants[variant], sizes[size], className].join(
@@ -61,7 +62,7 @@ const Element = href ? "a" : "button";
     }}
 >
     <span
-        class="absolute left-0 -mt-12 h-32 w-1/2 translate-x-[250%] rotate-12 bg-white opacity-20 transition-all duration-250 ease-out group-hover:translate-x-[2%]"
+        class="absolute left-0 -mt-12 h-44 w-1/2 translate-x-[220%] rotate-12 bg-white opacity-20 transition-all duration-250 ease-out group-hover:translate-x-[2%]"
     ></span>
     <slot />
 </Element>

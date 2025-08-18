@@ -1,44 +1,338 @@
-<section class="section products" id="productos">
-    <div class="container">
-        <div class="section-title">
-            <h2>Nuestros Productos</h2>
-        </div>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-image">
-                    <img
-                        src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
-                        alt="Café Soluble Premium"
-                    />
-                </div>
-                <div class="product-info">
-                    <h3>Café Soluble Premium</h3>
-                    <p>
-                        Disfruta de la riqueza del café guatemalteco en su forma
-                        más conveniente. 100% puro, sin azúcares ni aditivos.
-                    </p>
-                    <div class="product-price">Q125.00</div>
-                    <a href="#" class="cta-button">Agregar al Carrito</a>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <img
-                        src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
-                        alt="Café en Grano Personalizado"
-                    />
-                </div>
-                <div class="product-info">
-                    <h3>Café en Grano Personalizado</h3>
-                    <p>
-                        Molido a tu preferencia: espresso, filtro, prensa
-                        francesa o turco. Experimenta sabores únicos de
-                        diferentes regiones.
-                    </p>
-                    <div class="product-price">Desde Q185.00</div>
-                    <a href="#" class="cta-button">Personalizar Pedido</a>
-                </div>
-            </div>
+---
+interface CoffeeBlend {
+    id: number;
+    name: string;
+    type: string;
+    description: string;
+    price: number;
+    image: string;
+    origin: string;
+    roastLevel: string;
+    weight: string;
+    tastingNotes: string[];
+    intensity: number;
+}
+
+const coffeeBlends: CoffeeBlend[] = [
+    {
+        id: 1,
+        name: "Signature",
+        type: "Blend",
+        description:
+            "Una combinación bien equilibrada de granos de café premium de todo el mundo. Sabor rico y pleno con notas de chocolate y caramelo.",
+        price: 59.99,
+        image: "https://beanywoodcafe.com/cdn/shop/files/67015d60bb0039744987a0db_Original_Molido_1024x.webp?v=1747131488",
+        origin: "Brasil, Colombia, Guatemala",
+        roastLevel: "Medio",
+        weight: "250g",
+        tastingNotes: ["Chocolate", "Caramelo", "Nuez"],
+        intensity: 7
+    },
+    {
+        id: 2,
+        name: "Single Origin",
+        type: "Blend",
+        description:
+            "Un café de origen único obtenido de las mejores fincas de café. Con una acidez brillante, aroma floral y matices afrutados.",
+        price: 79.99,
+        image: "https://beanywoodcafe.com/cdn/shop/files/683c338249cab39a50f5693c_Sidecloudybeany_1024x.webp?v=1748877403",
+        origin: "Etiopía - Yirgacheffe",
+        roastLevel: "Claro",
+        weight: "250g",
+        tastingNotes: ["Floral", "Cítrico", "Frutal"],
+        intensity: 5
+    },
+    {
+        id: 3,
+        name: "Morning Roast",
+        type: "Blend",
+        description:
+            "Una mezcla de tueste ligero a medio perfecta para comenzar el día. Sabor nítido con granos americanos, con una acidez brillante y un final limpio.",
+        price: 49.99,
+        image: "https://beanywoodcafe.com/cdn/shop/files/67015d6054e7714dce9d7cbe_Specialy_Grano_1024x.webp?v=1752331581",
+        origin: "Colombia, Costa Rica",
+        roastLevel: "Claro-Medio",
+        weight: "250g",
+        tastingNotes: ["Cítrico", "Suave", "Limpio"],
+        intensity: 4
+    },
+];
+---
+
+<section class="py-16 px-4 max-w-7xl mx-auto" id="productos">
+    <!-- Header -->
+    <div class="text-center mb-4" data-aos="fade-down">
+        <h2
+            class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 tracking-tight"
+        >
+            Mezclas de café destacadas
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
+            Descubra nuestra cuidada selección de mezclas de café de primera
+            calidad, cada una de ellas elaborada para ofrecer una experiencia
+            cafetera excepcional.
+        </p>
+    </div>
+
+    <div class="flex justify-end mb-3 space-x-2 md:mr-10">
+        <button
+            id="prevBtn"
+            class="group flex items-center justify-center w-12 h-12 bg-white border border-gray-200 rounded-full shadow-sm  transition-all duration-300 hover:border-gray-300 hover:-translate-y-0.25"
+            aria-label="Previous"
+        >
+            <svg
+                class="w-5 h-5 text-gray-600 group-hover:text-gray-800 transition-colors duration-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+        <button
+            id="nextBtn"
+            class="group flex items-center justify-center w-12 h-12 bg-white border border-gray-200 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:border-gray-300 hover:-translate-y-0.5"
+            aria-label="Next"
+        >
+            <svg
+                class="w-5 h-5 text-gray-600 group-hover:text-gray-800 transition-colors duration-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+    </div>
+    <!-- Coffee Cards Container -->
+    <div class="relative overflow-hidden">
+        <div
+            id="cardsContainer"
+            class="flex transition-transform duration-500 ease-in-out m-10"
+            style="transform: translateX(0px)"
+        >
+            {
+                coffeeBlends.map((blend, index) => (
+                    <div
+                        class="flex-none w-full md:w-1/2 lg:w-1/3 px-4"
+                        data-aos="fade-up"
+                        data-aos-delay={index * 150}
+                    >
+                        <div class="group bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-200/50 backdrop-blur-sm">
+                            {/* Coffee Bag Image */}
+                            <div class="relative mb-6 overflow-hidden rounded-2xl bg-gradient-to-br from-[#f9f5f0] to-[#fffaed]">
+                                <div class="aspect-[4/5] flex items-center justify-center">
+                                    <img
+                                        src={blend.image}
+                                        alt={blend.name}
+                                        class="object-cover"
+                                        transition:name={`coffee-image-${blend.id}`}
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Content */}
+                            <div class="text-center">
+                                <span class="inline-block px-3 py-1 text-xs font-medium text-amber-700 bg-amber-100 rounded-full mb-3 tracking-wide uppercase">
+                                    {blend.type}
+                                </span>
+
+                                <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-amber-700 transition-colors duration-300" transition:name={`coffee-title-${blend.id}`}>
+                                    {blend.name}
+                                </h3>
+
+                                <p class="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-3">
+                                    {blend.description}
+                                </p>
+
+                                <div class="flex items-center justify-between">
+                                    <span class="text-3xl font-bold text-gray-800" transition:name={`coffee-price-${blend.id}`}>
+                                        Q{blend.price}
+                                    </span>
+
+                                    <div class="flex space-x-2">
+                                        {/* Ver ms Button */}
+                                        <a 
+                                            href={`mayacode-website/producto/${blend.id}`}
+                                            class="group/btn flex items-center justify-center px-4 py-2 bg-primary hover:bg-primary text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 text-sm"
+                                        >
+                                            Ver más
+                                        </a>
+                                        
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
         </div>
     </div>
 </section>
+
+<style>
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+        #cardsContainer > div {
+            width: 100%;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1023px) {
+        #cardsContainer > div {
+            width: 50%;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const container = document.getElementById("cardsContainer");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const indicators = document.querySelectorAll(".indicator");
+
+        let currentIndex = 0;
+        const totalItems = 3;
+
+        function getItemsPerView() {
+            if (window.innerWidth < 768) return 1;
+            if (window.innerWidth < 1024) return 2;
+            return 3;
+        }
+
+        function updateCarousel(index) {
+            const itemsPerView = getItemsPerView();
+            const maxIndex = Math.max(0, totalItems - itemsPerView);
+            currentIndex = Math.max(0, Math.min(index, maxIndex));
+
+            const translateX = -(currentIndex * (100 / itemsPerView));
+            if (container) {
+                container.style.transform = `translateX(${translateX}%)`;
+            }
+
+            // Update indicators
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle("bg-amber-600", i === currentIndex);
+                indicator.classList.toggle("bg-gray-300", i !== currentIndex);
+            });
+        }
+
+        prevBtn?.addEventListener("click", () => {
+            updateCarousel(currentIndex - 1);
+        });
+
+        nextBtn?.addEventListener("click", () => {
+            updateCarousel(currentIndex + 1);
+        });
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener("click", () => {
+                updateCarousel(index);
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener("resize", () => {
+            updateCarousel(currentIndex);
+        });
+
+        // Add hover effects to cards
+        const cards = document.querySelectorAll(".group");
+        cards.forEach((card) => {
+            card.addEventListener("mouseenter", function () {
+                this.style.transform = "translateY(-8px) scale(1.02)";
+            });
+
+            card.addEventListener("mouseleave", function () {
+                this.style.transform = "translateY(0) scale(1)";
+            });
+        });
+
+        // Add click animations to buttons
+        const buttons = document.querySelectorAll("button");
+        buttons.forEach((button) => {
+            button.addEventListener("click", function (e) {
+                // Create ripple effect
+                const ripple = document.createElement("span");
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.cssText = `
+          position: absolute;
+          width: ${size}px;
+          height: ${size}px;
+          left: ${x}px;
+          top: ${y}px;
+          background: rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          transform: scale(0);
+          animation: ripple 0.6s ease-out;
+          pointer-events: none;
+        `;
+
+                this.style.position = "relative";
+                this.style.overflow = "hidden";
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    if (ripple.parentNode) {
+                        ripple.parentNode.removeChild(ripple);
+                    }
+                }, 600);
+            });
+        });
+    });
+</script>
+
+<style>
+    @keyframes ripple {
+        to {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+
+    /* Smooth scrolling animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .group {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    .group:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+    .group:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+    .group:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+</style>

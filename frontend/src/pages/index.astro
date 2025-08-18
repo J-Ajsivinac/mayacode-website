@@ -10,19 +10,15 @@ import ScrollTop from "../components/ui/ScrollTop.astro";
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 const heroContent = {
-    title: "Descubre el Café Soluble Premium de los Mayas",
+    extra: "Café Soluble",
+    title: "Encuentra tu café ideal",
     description:
-        "Experiencia ancestral en cada taza. Elaborado con los mejores granos de café guatemaltecos y tecnología moderna para tu conveniencia.",
+        "Explora nuestra variedad de cafés solubles y encuentra el sabor perfecto para ti.",
     buttons: [
         {
-            text: "Get Started",
-            link: "/contact",
+            text: "Explora nuestro café",
+            link: "#productos",
             target: "_self",
-        },
-        {
-            text: "View on GitHub",
-            link: "https://github.com/rspisarski/titan-core",
-            target: "_blank",
         },
     ],
     backgroundImage:
@@ -37,5 +33,5 @@ const heroContent = {
     <Products />
     <Contact />
     <Footer />
-    <ScrollTop />
+    <!-- <ScrollTop /> -->
 </Layout>

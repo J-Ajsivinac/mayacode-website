@@ -1,0 +1,333 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Button from "../../components/ui/Button.astro";
+
+// src/pages/producto/[id].astro
+
+export async function getStaticPaths() {
+    const coffeeBlends = [
+        {
+            id: 1,
+            name: "Signature",
+            type: "Blend",
+            description:
+                "Una combinación bien equilibrada de granos de café premium de todo el mundo. Sabor rico y pleno con notas de chocolate y caramelo.",
+            longDescription:
+                "Nuestro café Signature es el resultado de años de perfeccionamiento en el arte del tostado. Combinamos cuidadosamente granos seleccionados de las mejores fincas de Brasil, Colombia y Guatemala para crear una experiencia de sabor única. Cada sorbo revela capas complejas de sabor que van desde el chocolate oscuro hasta las notas dulces de caramelo, con un final suave y persistente.",
+            price: 59.99,
+            image: "https://beanywoodcafe.com/cdn/shop/files/67015d60bb0039744987a0db_Original_Molido_1024x.webp?v=1747131488",
+            origin: "Brasil, Colombia, Guatemala",
+            roastLevel: "Medio",
+            weight: "250g",
+            tastingNotes: ["Chocolate", "Caramelo", "Nuez"],
+            intensity: 7,
+            brewing:
+                "Ideal para espresso, prensa francesa y métodos de filtro.",
+        },
+        {
+            id: 2,
+            name: "Single Origin",
+            type: "Blend",
+            description:
+                "Un café de origen único obtenido de las mejores fincas de café. Con una acidez brillante, aroma floral y matices afrutados.",
+            longDescription:
+                "Proveniente directamente de las tierras altas de Yirgacheffe en Etiopía, este café de origen único representa la pureza y complejidad que solo puede ofrecer un terroir excepcional. Cultivado a más de 1,800 metros de altitud, cada grano captura la esencia única de su origen, ofreciendo un perfil de sabor distintivo con notas florales pronunciadas y una acidez brillante que despierta los sentidos.",
+            price: 79.99,
+            image: "https://beanywoodcafe.com/cdn/shop/files/683c338249cab39a50f5693c_Sidecloudybeany_1024x.webp?v=1748877403",
+            origin: "Etiopía - Yirgacheffe",
+            roastLevel: "Claro",
+            weight: "250g",
+            tastingNotes: ["Floral", "Cítrico", "Frutal"],
+            intensity: 5,
+            brewing: "Perfecto para V60, Chemex y cold brew.",
+        },
+        {
+            id: 3,
+            name: "Morning Roast",
+            type: "Blend",
+            description:
+                "Una mezcla de tueste ligero a medio perfecta para comenzar el día. Sabor nítido con granos americanos, con una acidez brillante y un final limpio.",
+            longDescription:
+                "Diseñado especialmente para aquellos que buscan el compañero perfecto para comenzar cada día. Esta mezcla combina granos de alta calidad de Colombia y Costa Rica, tostados cuidadosamente hasta alcanzar el punto perfecto entre un tueste claro y medio. El resultado es un café equilibrado, con una acidez vibrante que energiza sin abrumar, y un final limpio que invita a otra taza.",
+            price: 49.99,
+            image: "https://beanywoodcafe.com/cdn/shop/files/67015d6054e7714dce9d7cbe_Specialy_Grano_1024x.webp?v=1752331581",
+            origin: "Colombia, Costa Rica",
+            roastLevel: "Claro-Medio",
+            weight: "250g",
+            tastingNotes: ["Cítrico", "Suave", "Limpio"],
+            intensity: 4,
+            brewing: "Excelente para drip coffee, AeroPress y espresso suave.",
+        },
+    ];
+
+    return coffeeBlends.map((blend) => ({
+        params: { id: blend.id.toString() },
+        props: { blend },
+    }));
+}
+
+const { blend } = Astro.props;
+---
+
+<Layout title={blend.name}>
+    <!-- Navigation -->
+
+    <!-- Product Detail -->
+    <main class="max-w-7xl mx-auto px-4 py-8 mt-20">
+        <!-- Back Button -->
+        <div class="mb-4">
+            <a
+                href="/mayacode-website"
+                class="inline-flex items-center text-gray-600 hover:text-amber-600 transition-colors group"
+            >
+                <svg
+                    class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Volver al Inicio
+            </a>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12">
+            <!-- Product Image -->
+            <div class="space-y-6">
+                <div
+                    class="bg-gradient-to-br from-[#f9f5f0] to-[#fffaed] rounded-3xl p-8 shadow-lg"
+                >
+                    <div class="aspect-[4/5] flex items-center justify-center">
+                        <img
+                            src={blend.image}
+                            alt={blend.name}
+                            class="object-cover max-w-full max-h-full"
+                            transition:name={`coffee-image-${blend.id}`}
+                        />
+                    </div>
+                </div>
+
+                <!-- Additional Product Info Cards -->
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="bg-[#fef9ed] rounded-2xl p-6 shadow-md">
+                        <h4 class="font-semibold text-gray-800 mb-2">Tueste</h4>
+                        <p class="text-gray-600 text-sm">
+                            {blend.roastLevel}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="space-y-8">
+                <!-- Header -->
+                <div class="space-y-4">
+                    <span
+                        class="inline-block px-4 py-2 text-sm font-medium text-amber-700 bg-amber-100 rounded-full uppercase tracking-wide"
+                    >
+                        {blend.type}
+                    </span>
+
+                    <h1
+                        class="text-4xl md:text-5xl font-bold text-gray-800 leading-tight"
+                        transition:name={`coffee-title-${blend.id}`}
+                    >
+                        {blend.name}
+                    </h1>
+
+                    <p class="text-xl text-gray-600 leading-relaxed">
+                        {blend.description}
+                    </p>
+                </div>
+
+                <!-- Long Description -->
+                <div class="prose max-w-none">
+                    <p class="text-gray-700 leading-relaxed">
+                        {blend.longDescription}
+                    </p>
+                </div>
+
+                <!-- Tasting Notes -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold text-gray-800">
+                        Notas de Cata
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        {
+                            blend.tastingNotes.map((note) => (
+                                <span class="px-4 py-2 bg-amber-50 text-amber-800 rounded-full text-sm font-medium border border-amber-200">
+                                    {note}
+                                </span>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <!-- Intensity -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold text-gray-800">
+                        Intensidad
+                    </h3>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex space-x-1">
+                            {
+                                Array.from({ length: 10 }, (_, i) => (
+                                    <div
+                                        class={`w-3 h-6 rounded-sm ${
+                                            i < blend.intensity
+                                                ? "bg-amber-600"
+                                                : "bg-gray-200"
+                                        }`}
+                                    />
+                                ))
+                            }
+                        </div>
+                        <span class="text-lg font-medium text-gray-700"
+                            >{blend.intensity}/10</span
+                        >
+                    </div>
+                </div>
+
+                <!-- Brewing Method -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold text-gray-800">
+                        Método de Preparación
+                    </h3>
+                    <p class="text-gray-700">{blend.brewing}</p>
+                </div>
+
+                <!-- Price and Purchase -->
+                <div class="border-t pt-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="space-y-2">
+                            <p class="text-sm text-gray-600">
+                                Precio por {blend.weight}
+                            </p>
+                            <span class="text-4xl font-bold text-gray-800">
+                                Q{blend.price}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Quantity and Add to Cart -->
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <label class="text-sm font-medium text-gray-700"
+                                >Cantidad:</label
+                            >
+                            <div
+                                class="flex items-center border border-gray-400 rounded-lg"
+                            >
+                                <button
+                                    class="px-3 py-3.5 text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition-colors rounded-l-lg"
+                                    onclick="decrementQuantity()"
+                                    id="decrementBtn"
+                                >
+                                    <svg
+                                        class="w-4 h-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M20 12H4"></path>
+                                    </svg>
+                                </button>
+                                <input
+                                    type="number"
+                                    id="quantity"
+                                    value="1"
+                                    min="1"
+                                    class="w-16 text-center py-2 border-0 focus:outline-none"
+                                />
+                                <button
+                                    id="incrementBtn"
+                                    class="px-3 py-3.5 text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition-colors rounded-r-lg"
+                                    onclick="incrementQuantity()"
+                                >
+                                    <svg
+                                        class="w-4 h-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                                        ></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <Button
+                            
+                            variant={"primary"}
+                            size={"full"}
+                            target={"_self"}
+                            class="w-full justify-center bg-amber-600 hover:bg-amber-700"
+                            <div
+                            class="flex items-center justify-center space-x-3"
+                        >
+                            <svg
+                                class="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13v6a2 2 0 002 2h6a2 2 0 002-2v-6"
+                                ></path>
+                            </svg>
+                            <span>Agregar al Carrito</span>
+                        </Button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-12 mt-16" transition:persist="footer">
+    <div class="max-w-7xl mx-auto px-4 text-center text-small">
+        <p>
+            &copy; 2025 MayaCode. Todos los derechos reservados. | Desarrollado
+            con pasión por el café guatemalteco
+        </p>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const input = document.getElementById(
+            "quantity"
+        ) as HTMLInputElement | null;
+        const incBtn = document.getElementById("incrementBtn");
+        const decBtn = document.getElementById("decrementBtn");
+
+        incBtn?.addEventListener("click", () => {
+            if (input) input.value = (parseInt(input.value) + 1).toString();
+        });
+
+        decBtn?.addEventListener("click", () => {
+            if (input && parseInt(input.value) > 1) {
+                input.value = (parseInt(input.value) - 1).toString();
+            }
+        });
+    });
+    // Add to cart animation
+</script>
