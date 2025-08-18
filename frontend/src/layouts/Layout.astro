@@ -44,11 +44,8 @@ const theme = "apollo";
     AOS.init();
 
     document.addEventListener("astro:after-swap", () => {
-        // Reinicializar AOS después de cada cambio de página
         if (typeof AOS !== "undefined") {
             AOS.refresh();
-            // O si necesitas reinicializar completamente:
-            // AOS.init();
         }
     });
 
@@ -59,7 +56,7 @@ const theme = "apollo";
                 duration: 800,
                 easing: "ease-in-out",
                 once: false, // Importante: permite que las animaciones se repitan
-                mirror: false, // No animar al hacer scroll hacia arriba
+                mirror: false,
             });
         }
     });
