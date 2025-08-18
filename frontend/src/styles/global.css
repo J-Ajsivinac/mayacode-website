@@ -90,11 +90,11 @@
 
 @layer base {
     [data-theme="apollo"] {
-        --color-primary: #cc7000;
-        --color-primary-light: #e68a00;
-        --color-primary-dark: #995400;
-        --color-secondary: #cc6600;
-        --color-secondary-light: #ff8c1a;
+        --color-primary: #8b4513;
+        --color-primary-light: #8b4513;
+        --color-primary-dark: #3e2723;
+        --color-secondary: #8b4513;
+        --color-secondary-light: #8b4513;
         --color-secondary-dark: #994d00;
         --color-accent: #cc3600;
         --color-background: #dcdbdb;
@@ -634,8 +634,8 @@ footer {
     text-align: center;
     padding-top: 30px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: #aaa;
-    font-size: 0.9rem;
+    color: #fff;
+    font-size: 1rem;
 }
 
 /* Responsive */

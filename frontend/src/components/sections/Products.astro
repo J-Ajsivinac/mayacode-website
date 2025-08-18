@@ -1,5 +1,4 @@
 ---
-// FeaturedCoffeeBlends.astro
 interface CoffeeBlend {
     id: number;
     name: string;
@@ -7,6 +6,11 @@ interface CoffeeBlend {
     description: string;
     price: number;
     image: string;
+    origin: string;
+    roastLevel: string;
+    weight: string;
+    tastingNotes: string[];
+    intensity: number;
 }
 
 const coffeeBlends: CoffeeBlend[] = [
@@ -18,6 +22,11 @@ const coffeeBlends: CoffeeBlend[] = [
             "Una combinación bien equilibrada de granos de café premium de todo el mundo. Sabor rico y pleno con notas de chocolate y caramelo.",
         price: 59.99,
         image: "https://beanywoodcafe.com/cdn/shop/files/67015d60bb0039744987a0db_Original_Molido_1024x.webp?v=1747131488",
+        origin: "Brasil, Colombia, Guatemala",
+        roastLevel: "Medio",
+        weight: "250g",
+        tastingNotes: ["Chocolate", "Caramelo", "Nuez"],
+        intensity: 7
     },
     {
         id: 2,
@@ -27,6 +36,11 @@ const coffeeBlends: CoffeeBlend[] = [
             "Un café de origen único obtenido de las mejores fincas de café. Con una acidez brillante, aroma floral y matices afrutados.",
         price: 79.99,
         image: "https://beanywoodcafe.com/cdn/shop/files/683c338249cab39a50f5693c_Sidecloudybeany_1024x.webp?v=1748877403",
+        origin: "Etiopía - Yirgacheffe",
+        roastLevel: "Claro",
+        weight: "250g",
+        tastingNotes: ["Floral", "Cítrico", "Frutal"],
+        intensity: 5
     },
     {
         id: 3,
@@ -36,13 +50,18 @@ const coffeeBlends: CoffeeBlend[] = [
             "Una mezcla de tueste ligero a medio perfecta para comenzar el día. Sabor nítido con granos americanos, con una acidez brillante y un final limpio.",
         price: 49.99,
         image: "https://beanywoodcafe.com/cdn/shop/files/67015d6054e7714dce9d7cbe_Specialy_Grano_1024x.webp?v=1752331581",
+        origin: "Colombia, Costa Rica",
+        roastLevel: "Claro-Medio",
+        weight: "250g",
+        tastingNotes: ["Cítrico", "Suave", "Limpio"],
+        intensity: 4
     },
 ];
 ---
 
 <section class="py-16 px-4 max-w-7xl mx-auto" id="productos">
     <!-- Header -->
-    <div class="text-center mb-12">
+    <div class="text-center mb-4" data-aos="fade-down">
         <h2
             class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 tracking-tight"
         >
@@ -55,7 +74,7 @@ const coffeeBlends: CoffeeBlend[] = [
         </p>
     </div>
 
-    <div class="flex justify-end mb-8 space-x-2 md:mr-10">
+    <div class="flex justify-end mb-3 space-x-2 md:mr-10">
         <button
             id="prevBtn"
             class="group flex items-center justify-center w-12 h-12 bg-white border border-gray-200 rounded-full shadow-sm  transition-all duration-300 hover:border-gray-300 hover:-translate-y-0.25"
@@ -115,6 +134,7 @@ const coffeeBlends: CoffeeBlend[] = [
                                         src={blend.image}
                                         alt={blend.name}
                                         class="object-cover"
+                                        transition:name={`coffee-image-${blend.id}`}
                                     />
                                 </div>
                             </div>
@@ -125,7 +145,7 @@ const coffeeBlends: CoffeeBlend[] = [
                                     {blend.type}
                                 </span>
 
-                                <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-amber-700 transition-colors duration-300">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-amber-700 transition-colors duration-300" transition:name={`coffee-title-${blend.id}`}>
                                     {blend.name}
                                 </h3>
 
@@ -134,27 +154,20 @@ const coffeeBlends: CoffeeBlend[] = [
                                 </p>
 
                                 <div class="flex items-center justify-between">
-                                    <span class="text-3xl font-bold text-gray-800">
+                                    <span class="text-3xl font-bold text-gray-800" transition:name={`coffee-price-${blend.id}`}>
                                         Q{blend.price}
                                     </span>
 
                                     <div class="flex space-x-2">
-                                        {/* Add to Cart Button */}
-                                        <button class="group/btn flex items-center justify-center w-12 h-12 bg-amber-600 hover:bg-amber-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95">
-                                            <svg
-                                                class="w-5 h-5 group-hover/btn:rotate-12 transition-transform duration-200"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                viewBox="0 0 24 24"
-                                            >
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke-width="2"
-                                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13v6a2 2 0 002 2h6a2 2 0 002-2v-6"
-                                                />
-                                            </svg>
-                                        </button>
+                                        {/* Ver ms Button */}
+                                        <a 
+                                            href={`mayacode-website/producto/${blend.id}`}
+                                            class="group/btn flex items-center justify-center px-4 py-2 bg-primary hover:bg-primary text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 text-sm"
+                                        >
+                                            Ver más
+                                        </a>
+                                        
+                                       
                                     </div>
                                 </div>
                             </div>
