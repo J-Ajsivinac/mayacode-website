@@ -26,7 +26,7 @@ const coffeeBlends: CoffeeBlend[] = [
         roastLevel: "Medio",
         weight: "250g",
         tastingNotes: ["Chocolate", "Caramelo", "Nuez"],
-        intensity: 7
+        intensity: 7,
     },
     {
         id: 2,
@@ -40,7 +40,7 @@ const coffeeBlends: CoffeeBlend[] = [
         roastLevel: "Claro",
         weight: "250g",
         tastingNotes: ["Floral", "Cítrico", "Frutal"],
-        intensity: 5
+        intensity: 5,
     },
     {
         id: 3,
@@ -54,7 +54,7 @@ const coffeeBlends: CoffeeBlend[] = [
         roastLevel: "Claro-Medio",
         weight: "250g",
         tastingNotes: ["Cítrico", "Suave", "Limpio"],
-        intensity: 4
+        intensity: 4,
     },
 ];
 ---
@@ -77,7 +77,7 @@ const coffeeBlends: CoffeeBlend[] = [
     <div class="flex justify-end mb-3 space-x-2 md:mr-10">
         <button
             id="prevBtn"
-            class="group flex items-center justify-center w-12 h-12 bg-white border border-gray-200 rounded-full shadow-sm  transition-all duration-300 hover:border-gray-300 hover:-translate-y-0.25"
+            class="group flex items-center justify-center w-12 h-12 bg-white border border-gray-200 rounded-full shadow-sm transition-all duration-300 hover:border-gray-300 hover:-translate-y-0.25"
             aria-label="Previous"
         >
             <svg
@@ -145,7 +145,10 @@ const coffeeBlends: CoffeeBlend[] = [
                                     {blend.type}
                                 </span>
 
-                                <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-amber-700 transition-colors duration-300" transition:name={`coffee-title-${blend.id}`}>
+                                <h3
+                                    class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-amber-700 transition-colors duration-300"
+                                    transition:name={`coffee-title-${blend.id}`}
+                                >
                                     {blend.name}
                                 </h3>
 
@@ -154,20 +157,21 @@ const coffeeBlends: CoffeeBlend[] = [
                                 </p>
 
                                 <div class="flex items-center justify-between">
-                                    <span class="text-3xl font-bold text-gray-800" transition:name={`coffee-price-${blend.id}`}>
+                                    <span
+                                        class="text-3xl font-bold text-gray-800"
+                                        transition:name={`coffee-price-${blend.id}`}
+                                    >
                                         Q{blend.price}
                                     </span>
 
                                     <div class="flex space-x-2">
                                         {/* Ver ms Button */}
-                                        <a 
-                                            href={`/producto/${blend.id}`}
+                                        <a
+                                            href={`${import.meta.env.BASE_URL}/producto/${blend.id}`}
                                             class="group/btn flex items-center justify-center px-4 py-2 bg-primary hover:bg-primary text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 text-sm"
                                         >
                                             Ver más
                                         </a>
-                                        
-                                       
                                     </div>
                                 </div>
                             </div>

@@ -13,5 +13,5 @@ export default defineConfig({
 
     integrations: [icon()],
     site: "https://J-Ajsivinac.github.io",
-    base: "/mayacode-website/",
+    base: "mayacode-website",
 });
