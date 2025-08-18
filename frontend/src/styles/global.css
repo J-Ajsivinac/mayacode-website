@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
 @import "tailwindcss";
 @import "aos/dist/aos.css";
 @plugin "@tailwindcss/typography";
@@ -325,7 +325,7 @@ body {
 }
 
 .site-container {
-    @apply mx-auto max-w-[var(--container-base)] w-full ;
+    @apply mx-auto max-w-[var(--container-base)] w-full;
 }
 .site-container--small {
     @apply mx-auto max-w-[var(--container-small)] w-full;
@@ -443,8 +443,6 @@ pre[class*="language-"] {
     transform: scale(1.05);
 }
 
-
-
 .products {
     background-color: #f9f5f0;
 }
@@ -538,12 +536,20 @@ pre[class*="language-"] {
     margin-bottom: 20px;
 }
 
-.contact-form input,
+.contact-form input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 100px;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+}
+
 .contact-form textarea {
     width: 100%;
     padding: 15px;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 10px;
     font-family: "Poppins", sans-serif;
     font-size: 1rem;
 }
@@ -592,13 +598,13 @@ footer {
 }
 
 .footer-column ul li a {
-    color: #ccc;
+    color: #fff;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .footer-column ul li a:hover {
-    color: var(--light);
+    color: #000;
 }
 
 .social-links {
