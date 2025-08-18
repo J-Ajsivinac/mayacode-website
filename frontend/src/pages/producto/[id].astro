@@ -73,7 +73,7 @@ const { blend } = Astro.props;
     <!-- Navigation -->
 
     <!-- Product Detail -->
-    <main class="max-w-7xl mx-auto px-4 py-8 mt-20" transition:animate="slide">
+    <main class="max-w-7xl mx-auto px-4 py-8 mt-20">
         <!-- Back Button -->
         <div class="mb-4">
             <a
@@ -210,7 +210,6 @@ const { blend } = Astro.props;
                             </p>
                             <span
                                 class="text-4xl font-bold text-gray-800"
-                                transition:name={`coffee-price-${blend.id}`}
                             >
                                 Q{blend.price}
                             </span>
@@ -278,7 +277,6 @@ const { blend } = Astro.props;
                             variant="primary"
                             size="full"
                             class="w-full justify-center bg-amber-600 hover:bg-amber-700"
-                            transition:name={`coffee-buy-${blend.id}`}
                             <div
                             class="flex items-center justify-center space-x-3"
                         >
@@ -333,98 +331,4 @@ const { blend } = Astro.props;
         });
     });
     // Add to cart animation
-    const addToCartButton = document.querySelector(
-        'button[class*="bg-amber-600"]'
-    );
-    if (addToCartButton) {
-        addToCartButton.addEventListener("click", function (e) {
-            // Add ripple effect
-            const button = this;
-            const ripple = document.createElement("span");
-            const rect = button.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const mouseEvent = e instanceof MouseEvent ? e : undefined;
-            const x = mouseEvent
-                ? mouseEvent.clientX - rect.left - size / 2
-                : rect.width / 2 - size / 2;
-            const y = mouseEvent
-                ? mouseEvent.clientY - rect.top - size / 2
-                : rect.height / 2 - size / 2;
-
-            ripple.style.cssText = `
-                position: absolute;
-                width: ${size}px;
-                height: ${size}px;
-                left: ${x}px;
-                top: ${y}px;
-                background: rgba(255, 255, 255, 0.3);
-                border-radius: 50%;
-                transform: scale(0);
-                animation: ripple 0.6s ease-out;
-                pointer-events: none;
-            `;
-
-            button.style.position = "relative";
-            button.style.overflow = "hidden";
-            button.appendChild(ripple);
-
-            // Add success feedback
-            const originalText = button.innerHTML;
-            button.innerHTML = `
-                <div class="flex items-center justify-center space-x-3">
-                    <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span>¡Agregado!</span>
-                </div>
-            `;
-
-            setTimeout(() => {
-                button.innerHTML = originalText;
-                if (ripple.parentNode) {
-                    ripple.parentNode.removeChild(ripple);
-                }
-            }, 2000);
-        });
-    }
 </script>
-
-<style>
-    @keyframes ripple {
-        to {
-            transform: scale(2);
-            opacity: 0;
-        }
-    }
-
-    /* Custom transitions for page elements */
-    @keyframes slideInFromRight {
-        from {
-            opacity: 0;
-            transform: translateX(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    main > div > div:first-child {
-        animation: fadeInUp 0.8s ease-out;
-    }
-
-    main > div > div:last-child {
-        animation: slideInFromRight 0.8s ease-out 0.2s both;
-    }
-</style>

@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 interface Props {
     title: string;
 }
@@ -21,6 +22,7 @@ const theme = "apollo";
         />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+        <ClientRouter />
     </head>
     <body data-theme={theme}>
         <Navbar class="fixed inset-0 bg-black/50 z-40 hidden" />
@@ -40,4 +42,25 @@ const theme = "apollo";
 <script>
     import AOS from "aos";
     AOS.init();
+
+    document.addEventListener("astro:after-swap", () => {
+        // Reinicializar AOS después de cada cambio de página
+        if (typeof AOS !== "undefined") {
+            AOS.refresh();
+            // O si necesitas reinicializar completamente:
+            // AOS.init();
+        }
+    });
+
+    document.addEventListener("astro:page-load", () => {
+        // Inicializar AOS cuando la página se carga
+        if (typeof AOS !== "undefined") {
+            AOS.init({
+                duration: 800,
+                easing: "ease-in-out",
+                once: false, // Importante: permite que las animaciones se repitan
+                mirror: false, // No animar al hacer scroll hacia arriba
+            });
+        }
+    });
 </script>
