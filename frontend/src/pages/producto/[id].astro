@@ -311,7 +311,7 @@ const { blend } = Astro.props;
 </footer>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("astro:page-load", () => {
         const input = document.getElementById(
             "quantity"
         ) as HTMLInputElement | null;
@@ -328,5 +328,4 @@ const { blend } = Astro.props;
             }
         });
     });
-    // Add to cart animation
 </script>
