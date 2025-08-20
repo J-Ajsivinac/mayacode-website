@@ -1,0 +1,568 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/ui/Button.astro";
+
+// src/pages/carrito.astro
+---
+
+<Layout title="Carrito de Compras - MayaCode">
+    <!-- Navigation -->
+
+    <!-- Cart Page -->
+    <main class="max-w-7xl mx-auto px-4 py-8 mt-20">
+        <!-- Back Button -->
+        <div class="mb-6">
+            <a
+                href={import.meta.env.BASE_URL}
+                class="inline-flex items-center text-gray-600 hover:text-amber-600 transition-colors group"
+            >
+                <svg
+                    class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Continuar Comprando
+            </a>
+        </div>
+
+        <!-- Page Header -->
+        <div class="mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                Tu Carrito
+            </h1>
+            <p class="text-xl text-gray-600">
+                Revisa tus productos seleccionados
+            </p>
+        </div>
+
+        <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+            <!-- Cart Items -->
+            <div class="lg:col-span-8">
+                <div class="space-y-4" id="cart-items">
+                    <!-- Cart Item 1 -->
+                    <div
+                        class="bg-white rounded-2xl shadow-md p-6 border border-gray-100"
+                    >
+                        <div class="flex flex-col sm:flex-row gap-6">
+                            <!-- Product Image -->
+                            <div class="flex-shrink-0">
+                                <div
+                                    class="w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-[#f9f5f0] to-[#fffaed] rounded-xl p-4 flex items-center justify-center"
+                                >
+                                    <img
+                                        src="https://beanywoodcafe.com/cdn/shop/files/67015d60bb0039744987a0db_Original_Molido_1024x.webp?v=1747131488"
+                                        alt="Signature Blend"
+                                        class="object-cover max-w-full max-h-full"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Product Details -->
+                            <div class="flex-grow space-y-3">
+                                <div
+                                    class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3"
+                                >
+                                    <div>
+                                        <h3
+                                            class="text-xl font-semibold text-gray-800"
+                                        >
+                                            Signature Blend
+                                        </h3>
+                                        <p class="text-gray-600 text-sm">
+                                            Tueste Medio • 250g
+                                        </p>
+                                        <div class="flex flex-wrap gap-2 mt-2">
+                                            <span
+                                                class="px-2 py-1 bg-amber-50 text-amber-800 rounded text-xs border border-amber-200"
+                                            >
+                                                Chocolate
+                                            </span>
+                                            <span
+                                                class="px-2 py-1 bg-amber-50 text-amber-800 rounded text-xs border border-amber-200"
+                                            >
+                                                Caramelo
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p
+                                            class="text-2xl font-bold text-gray-800"
+                                        >
+                                            Q59.99
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Quantity and Remove -->
+                                <div
+                                    class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4"
+                                >
+                                    <div class="flex items-center space-x-3">
+                                        <label
+                                            class="text-sm font-medium text-gray-700"
+                                        >
+                                            Cantidad:
+                                        </label>
+                                        <div
+                                            class="flex items-center border border-gray-300 rounded-lg"
+                                        >
+                                            <button
+                                                class="px-3 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition-colors rounded-l-lg"
+                                                onclick="updateQuantity(1, -1)"
+                                            >
+                                                <svg
+                                                    class="w-4 h-4"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M20 12H4"></path>
+                                                </svg>
+                                            </button>
+                                            <input
+                                                type="number"
+                                                id="quantity-1"
+                                                value="2"
+                                                min="1"
+                                                class="w-16 text-center py-2 border-0 focus:outline-none"
+                                                readonly
+                                            />
+                                            <button
+                                                class="px-3 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition-colors rounded-r-lg"
+                                                onclick="updateQuantity(1, 1)"
+                                            >
+                                                <svg
+                                                    class="w-4 h-4"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                                                    ></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="text-red-600 hover:text-red-700 text-sm font-medium flex items-center space-x-2 transition-colors"
+                                        onclick="removeItem(1)"
+                                    >
+                                        <svg
+                                            class="w-4 h-4"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                            ></path>
+                                        </svg>
+                                        <span>Eliminar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cart Item 2 -->
+                    <div
+                        class="bg-white rounded-2xl shadow-md p-6 border border-gray-100"
+                    >
+                        <div class="flex flex-col sm:flex-row gap-6">
+                            <!-- Product Image -->
+                            <div class="flex-shrink-0">
+                                <div
+                                    class="w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-[#f9f5f0] to-[#fffaed] rounded-xl p-4 flex items-center justify-center"
+                                >
+                                    <img
+                                        src="https://beanywoodcafe.com/cdn/shop/files/683c338249cab39a50f5693c_Sidecloudybeany_1024x.webp?v=1748877403"
+                                        alt="Single Origin"
+                                        class="object-cover max-w-full max-h-full"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Product Details -->
+                            <div class="flex-grow space-y-3">
+                                <div
+                                    class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3"
+                                >
+                                    <div>
+                                        <h3
+                                            class="text-xl font-semibold text-gray-800"
+                                        >
+                                            Single Origin
+                                        </h3>
+                                        <p class="text-gray-600 text-sm">
+                                            Tueste Claro • 250g
+                                        </p>
+                                        <div class="flex flex-wrap gap-2 mt-2">
+                                            <span
+                                                class="px-2 py-1 bg-amber-50 text-amber-800 rounded text-xs border border-amber-200"
+                                            >
+                                                Floral
+                                            </span>
+                                            <span
+                                                class="px-2 py-1 bg-amber-50 text-amber-800 rounded text-xs border border-amber-200"
+                                            >
+                                                Cítrico
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p
+                                            class="text-2xl font-bold text-gray-800"
+                                        >
+                                            Q79.99
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Quantity and Remove -->
+                                <div
+                                    class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4"
+                                >
+                                    <div class="flex items-center space-x-3">
+                                        <label
+                                            class="text-sm font-medium text-gray-700"
+                                        >
+                                            Cantidad:
+                                        </label>
+                                        <div
+                                            class="flex items-center border border-gray-300 rounded-lg"
+                                        >
+                                            <button
+                                                class="px-3 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition-colors rounded-l-lg"
+                                                onclick="updateQuantity(2, -1)"
+                                            >
+                                                <svg
+                                                    class="w-4 h-4"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M20 12H4"></path>
+                                                </svg>
+                                            </button>
+                                            <input
+                                                type="number"
+                                                id="quantity-2"
+                                                value="1"
+                                                min="1"
+                                                class="w-16 text-center py-2 border-0 focus:outline-none"
+                                                readonly
+                                            />
+                                            <button
+                                                class="px-3 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition-colors rounded-r-lg"
+                                                onclick="updateQuantity(2, 1)"
+                                            >
+                                                <svg
+                                                    class="w-4 h-4"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                                                    ></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="text-red-600 hover:text-red-700 text-sm font-medium flex items-center space-x-2 transition-colors"
+                                        onclick="removeItem(2)"
+                                    >
+                                        <svg
+                                            class="w-4 h-4"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                            ></path>
+                                        </svg>
+                                        <span>Eliminar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empty Cart State (Hidden by default) -->
+                <div class="hidden text-center py-16" id="empty-cart">
+                    <div class="max-w-md mx-auto">
+                        <div
+                            class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6"
+                        >
+                            <svg
+                                class="w-12 h-12 text-gray-400"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13v6a2 2 0 002 2h6a2 2 0 002-2v-6"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                            Tu carrito está vacío
+                        </h3>
+                        <p class="text-gray-600 mb-8">
+                            ¡Descubre nuestros deliciosos cafés guatemaltecos y
+                            añade algunos a tu carrito!
+                        </p>
+                        <Button
+                            variant={"primary"}
+                            href={import.meta.env.BASE_URL}
+                            class="bg-amber-600 hover:bg-amber-700 inline-flex"
+                        >
+                            Explorar Productos
+                        </Button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="lg:col-span-4 mt-8 lg:mt-0">
+                <div
+                    class="bg-gradient-to-br from-[#fef9ed] to-[#fffaed] rounded-2xl p-6 shadow-lg border border-amber-100 sticky top-8"
+                >
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-6">
+                        Resumen del Pedido
+                    </h2>
+
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between text-gray-700">
+                            <span>Subtotal</span>
+                            <span id="subtotal">Q199.97</span>
+                        </div>
+                        <div class="flex justify-between text-gray-700">
+                            <span>Envío</span>
+                            <span class="text-green-600 font-medium"
+                                >Gratis</span
+                            >
+                        </div>
+                        <div class="border-t border-amber-200 pt-4">
+                            <div
+                                class="flex justify-between text-xl font-bold text-gray-800"
+                            >
+                                <span>Total</span>
+                                <span id="total">Q199.97</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Promo Code -->
+                    <div class="mb-6">
+                        <div class="flex space-x-2">
+                            <input
+                                type="text"
+                                placeholder="Código de descuento"
+                                class="flex-1 px-2 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                                id="promo-code"
+                            />
+                            <button
+                                class="px-4 py-3 bg-amber-100 text-amber-700 rounded-lg hover:bg-amber-200 transition-colors font-medium"
+                                onclick="applyPromoCode()"
+                            >
+                                Aplicar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Checkout Button -->
+                    <Button
+                        variant={"primary"}
+                        size={"full"}
+                        class="w-full justify-center bg-amber-600 hover:bg-amber-700 mb-4"
+                    >
+                        <div class="flex items-center justify-center space-x-3">
+                            <svg
+                                class="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                                ></path>
+                            </svg>
+                            <span>Proceder al Pago</span>
+                        </div>
+                    </Button>
+
+                    <!-- Security Info -->
+                    <div class="text-center text-sm text-gray-600">
+                        <div
+                            class="flex items-center justify-center space-x-2 mb-2"
+                        >
+                            <svg
+                                class="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                                ></path>
+                            </svg>
+                            <span>Pago 100% Seguro</span>
+                        </div>
+                        <p>Envío gratis a partir de Q150</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-12 mt-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <p class="text-sm">
+            &copy; 2025 MayaCode. Todos los derechos reservados. | Desarrollado
+            con pasión por el café guatemalteco
+        </p>
+    </div>
+</footer>
+
+<script>
+// Extend the Window interface for TypeScript
+declare global {
+    interface Window {
+        updateQuantity?: (itemId: number, change: number) => void;
+        removeItem?: (itemId: number) => void;
+        applyPromoCode?: () => void;
+    }
+}
+    document.addEventListener("astro:page-load", () => {
+        // Cart data
+        let cartItems = [
+            { id: 1, price: 59.99, quantity: 2 },
+            { id: 2, price: 79.99, quantity: 1 },
+        ];
+
+        // Update quantity function
+        window.updateQuantity = function (itemId, change) {
+            const item = cartItems.find((item) => item.id === itemId);
+            if (item) {
+                const newQuantity = item.quantity + change;
+                if (newQuantity > 0) {
+                    item.quantity = newQuantity;
+                    const quantityInput = document.getElementById(
+                        `quantity-${itemId}`
+                    );
+                    if (quantityInput) {
+                        (quantityInput as HTMLInputElement).value = newQuantity.toString();
+                    }
+                    updateTotals();
+                }
+            }
+        };
+
+        // Remove item function
+        window.removeItem = function (itemId) {
+            const itemIndex = cartItems.findIndex((item) => item.id === itemId);
+            if (itemIndex !== -1) {
+                cartItems.splice(itemIndex, 1);
+                // Remove item from DOM
+                const itemElement = document
+                    .querySelector(`[onclick*="${itemId}"]`)
+                    ?.closest(".bg-white");
+                if (itemElement) {
+                    itemElement.remove();
+                }
+                updateTotals();
+                checkEmptyCart();
+            }
+        };
+
+        // Update totals function
+        function updateTotals() {
+            const subtotal = cartItems.reduce(
+                (sum, item) => sum + item.price * item.quantity,
+                0
+            );
+            const subtotalElement = document.getElementById("subtotal");
+            const totalElement = document.getElementById("total");
+
+            if (subtotalElement)
+                subtotalElement.textContent = `Q${subtotal.toFixed(2)}`;
+            if (totalElement)
+                totalElement.textContent = `Q${subtotal.toFixed(2)}`;
+        }
+
+        // Check if cart is empty
+        function checkEmptyCart() {
+            const cartItemsContainer = document.getElementById("cart-items");
+            const emptyCartDiv = document.getElementById("empty-cart");
+
+            if (cartItems.length === 0) {
+                if (cartItemsContainer)
+                    cartItemsContainer.style.display = "none";
+                if (emptyCartDiv) emptyCartDiv.classList.remove("hidden");
+            }
+        }
+
+        // Apply promo code function
+        window.applyPromoCode = function () {
+            const promoInput = document.getElementById(
+                "promo-code"
+            ) as HTMLInputElement;
+            const code = promoInput?.value.trim().toLowerCase();
+
+            if (code === "maya10") {
+                alert("¡Código aplicado! 10% de descuento");
+                // Here you would apply the discount logic
+            } else if (code && code !== "") {
+                alert("Código de descuento no válido");
+            }
+
+            if (promoInput) promoInput.value = "";
+        };
+
+        // Initial totals calculation
+        updateTotals();
+    });
+</script>

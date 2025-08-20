@@ -1,0 +1,24 @@
+---
+import CardTestimonials from "../ui/CardTestimonials.astro"
+---
+
+<section 
+    class="py-12 sm:py-16 px-4 min-h-[80vh] flex items-center"
+    style="background: linear-gradient(135deg, #dcdbdb 0%, #c2c1c1 100%);"
+    id="testimonios"
+>
+    <div class="max-w-7xl mx-auto w-full">
+        <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4 tracking-tight">
+                Testimonios
+            </h2>
+        </div>
+
+        <!-- Grid de testimonios -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" data-aos="fade-up" data-aos-delay="100">
+            <CardTestimonials index={0} />
+            <CardTestimonials index={1} />
+            <CardTestimonials index={2} />
+        </div>
+    </div>
+</section>
