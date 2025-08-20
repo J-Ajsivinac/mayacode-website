@@ -1,0 +1,62 @@
+---
+export interface Props {
+    index: number;
+}
+
+const { index } = Astro.props;
+
+const testimonios = [
+    {
+        id: 1,
+        texto: "El mejor café soluble que he probado. Tiene todo el sabor de un café recién hecho pero con la conveniencia que necesito para mi rutina matutina.",
+        nombre: "María Rodríguez",
+        cargo: "Cliente Frecuente",
+        iniciales: "MR",
+    },
+    {
+        id: 2,
+        texto: "Como amante del café, aprecio la calidad y el proceso artesanal. MayaCode ha logrado combinar tradición y modernidad de manera excepcional.",
+        nombre: "Juan Muñoz",
+        cargo: "Barista Profesional",
+        iniciales: "JP",
+    },
+    {
+        id: 3,
+        texto: "La personalización del café en grano es increíble. Puedo elegir exactamente cómo quiero mi café y siempre llega fresco y perfecto.",
+        nombre: "Ana Sánchez",
+        cargo: "Cliente Corporativo",
+        iniciales: "AS",
+    },
+];
+---
+
+<div
+    class="testimonio-card bg-[#f4f5f7] bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+    
+>
+    <div class="text-black text-lg leading-relaxed mb-6 italic">
+        {testimonios[index].texto}
+    </div>
+    <div class="flex items-center">
+        <div
+            class="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center text-orange-800 font-bold text-lg mr-4 shadow-md"
+        >
+            {testimonios[index].iniciales}
+        </div>
+        <div>
+            <div class="text-black font-semibold text-xl">
+                {testimonios[index].nombre}
+            </div>
+            <div class="text-accent text-sm font-bold">
+                {testimonios[index].cargo}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .testimonio-card {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+</style>
